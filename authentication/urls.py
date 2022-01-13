@@ -1,13 +1,22 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt import views as jwt_views
-from .views import ObtainTokenPairWithColorView, CustomUserCreate, HelloWorldView
+from .views import ObtainTokenPairWithColorView, HelloWorldView, UserViewSet
+
+router = DefaultRouter()
+router.register(r'users', UserViewSet, basename='user')
 
 urlpatterns = [
-    path('user/create/', CustomUserCreate.as_view(),
-         name='create_user'),
-    path('token/obtain/', ObtainTokenPairWithColorView.as_view(),
+    # path('user/register/', CustomUserCreate.as_view(),
+    #      name='create_user'),
+    path('token/create/', ObtainTokenPairWithColorView.as_view(),
          name='token_create'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(),
          name='token_refresh'),
-    path('hello/', HelloWorldView.as_view(), name='hello_world')
+    path('testview/', HelloWorldView.as_view(),
+         name='hello_world'),
+    path(r'', include(router.urls)),
 ]
+
+
+
