@@ -7,11 +7,11 @@ from rest_framework.views import APIView
 from rest_framework import viewsets
 
 from .models import CustomUser
-from .serializers import TokenObtainPairSerializer, CustomUserSerializer
+from .serializers import MyTokenObtainPairSerializer, CustomUserSerializer
 
 
 class ObtainTokenPairWithColorView(TokenObtainPairView):
-    serializer_class = TokenObtainPairSerializer
+    serializer_class = MyTokenObtainPairSerializer
 
 
 # class CustomUserCreate(APIView):

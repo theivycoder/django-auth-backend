@@ -9,9 +9,9 @@ router.register(r'users', UserViewSet, basename='user')
 urlpatterns = [
     # path('user/register/', CustomUserCreate.as_view(),
     #      name='create_user'),
-    path('token/create/', ObtainTokenPairWithColorView.as_view(),
+    path('login/', ObtainTokenPairWithColorView.as_view(),
          name='token_create'),
-    path('token/refresh/', jwt_views.TokenRefreshView.as_view(),
+    path('login/refresh/', jwt_views.TokenRefreshView.as_view(),
          name='token_refresh'),
     path('testview/', HelloWorldView.as_view(),
          name='hello_world'),
